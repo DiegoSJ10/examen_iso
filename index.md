@@ -1,3 +1,3 @@
-# EXAMEN ISO
+# EXAMEN ISO Diego Miguelez Lopez
 
-[examen] (examen_iso)
+[examen](examen_iso)
