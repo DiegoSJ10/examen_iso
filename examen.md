@@ -12,31 +12,31 @@ La entrega de este examen ser realizará utilizando [Github](https://github.com/
 **1.-** Desde tu directorio personal, crea un fichero en `/tmp` llamado `ev3ex1.txt` que contenga tu nombre utilizando una única orden (por supuesto sin utilizar ningún editor)
 
 ```
-
+dmiguelez@A201_PC09:~$ touch /tmp/ev3ex1.txt | echo "Diego" > /tmp/ev3ex1.txt
 ```
 
 **2.-** Muestra por pantalla el número de ficheros que tiene el directorio `/bin` (es decir, la salida tiene que ser únicamente un número).
 
 ```
-
+dmiguelez@A201_PC09:/bin$ ls | wc -l
 ```
 
 **3.-** Muestra por pantalla todos los archivos del directorio `/bin` que tengan por lo menos dos vocales en su nombre, suponiendo que te encuentras en tu directorio personal.
 
 ```
-
+dmiguelez@A201_PC09:~$ ls /bin | grep -E '.*([aeiou]).*([aeiou]).*'
 ```
 
 **4.-** Estando en tu directorio personal, muestra por pantalla la quinta línea del fichero `/etc/passwd`.
 
 ```
-
+dmiguelez@A201_PC09:/etc$ sed -n 5p passwd
 ```
 
 **5.-** Sabemos que el fichero `/usr/share/dict/spanish` contiene un listado de palabras en castellano. Calcula el número de palabras de este fichero que tienen un número impar de letras. Por tanto, la salida del comando deberá ser un único número.
 
 ```
-
+dmiguelez@A201_PC09:~$ cat /usr/share/dict/spanish | sed '1~2d' | wc -m
 ```
 
 **6.-** Indica qué expresiones regulares utilizarías para identificar los siguientes patrones, utiliza la sintaxis del motor ERE y suponiendo que la cadena buscada *es el único contenido de cada línea*. Se valora la precisión en la expresión regular para que detecte únicamente el elemento que se pide. 
@@ -44,31 +44,31 @@ La entrega de este examen ser realizará utilizando [Github](https://github.com/
 **a)** Un NIF. Ejemplos: 2345678f, 71.555.333N, 10.333.222-T, …
 
 ```
-
+[0-9]{2}*[0-9]{3}*[0-9]{3}*[A-Z]
 ```
 
 **b)** Una matrícula de coche (formato nuevo y antiguo). Ejemplos: 2288FSF, 4441KSD, LE3308G, A1234AJ, …
 
 ```
-
+[[:alnum:]]{4}[[:alpha:]]{3} | [[:alpha:]]{2}[[:alnum:]]{4}[[alpha]]{1}
 ```
 
 **c)** Una fecha de la forma 04/05/2021
 
 ```
-
+[[:alnum:]]{2}\/[[:alnum:]]{2}\/[[:alnum:]]{4}
 ```
 
 **d)** Una dirección MAC. Ejemplos: 00-09-0F-FE-00-01, 3C:A0:67:43:D3:92, …
 
 ```
-
+[[:alnum:]]{2}*[[:alnum:]]{2}*[[:alnum:]]{2}*[[:alnum:]]{2}*[[:alnum:]]{2}*[[:alnum:]]{2}
 ```
 
 **e)** Una dirección IP. Ejemplos: 192.168.1.31, 10.0.0.1, 172.255.255.1, …
 
 ```
-
+[[:digit:]]{3}*[[:digit:]]{3}*[[:digit:]]{3}*[[:digit:]]{3}
 ```
 
 **7.-** En clase hicimos una práctica en la que utilizábamos el editor `sed` para extraer datos de un fichero `csv` y convertirlos a formato `json` aunque es algo que se puede extrapolar a cualquier formato. 
